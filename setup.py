@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.2.10' 
+VERSION = '0.2.15' 
 DESCRIPTION = 'Short description of coalestr'
 LONG_DESCRIPTION = 'Long description of coalestr'
 
