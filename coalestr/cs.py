@@ -1,5 +1,5 @@
-#   coalestr version 0.2.15
-#   19 Apr 2023
+#   coalestr version 0.2.17
+#   27 Apr 2023
 
 '''
 Population class methods
@@ -567,11 +567,6 @@ class Population(object):
             self.v,
             self.locus_kb))
         
-        print("unit_length {0:.2f}, \nchromosome_length {1:d}, \nminimum_length {2:d}".format(
-            self.unit_length,
-            self.chromosome_length,
-            self.minimum_length))
-        
 ##########################################################   
         
     def restore_settings(self):
@@ -711,7 +706,7 @@ class Population(object):
                 
             elif metrics[i] == "Q":
             
-                ax[i].plot(time_axis, self.parameters[:go_back_in_time, 1], marker='', color='blue', linewidth=2, label="Nh")
+                ax[i].plot(time_axis, self.parameters[:go_back_in_time, 1], marker='', color='blue', linewidth=2, label="Q")
                 ax[i].legend(title="Q", frameon=True, fontsize = 12) 
                 ax[i].set_ylabel("Q", fontsize=12)
                 ax[i].grid(visible=True, which='both', color='0.65', linestyle='-')                
@@ -723,6 +718,13 @@ class Population(object):
                 ax[i].set_ylabel("\u03C7", fontsize=12)
                 ax[i].grid(visible=True, which='both', color='0.65', linestyle='-')
                 
+            elif metrics[i] == "M" or metrics[i] == "Nm":
+            
+                ax[i].plot(time_axis, self.parameters[:go_back_in_time, 3], marker='', color='blue', linewidth=2, label="Nm")
+                ax[i].legend(title="Nm", frameon=True, fontsize = 12) 
+                ax[i].set_ylabel("Nm", fontsize=12)
+                ax[i].grid(visible=True, which='both', color='0.65', linestyle='-')         
+            
             else:
                 
                 print('Sorry,' + ' "' + metrics[i] + '" ' + 'is not recognised as a metric by this plot.') 
@@ -738,16 +740,16 @@ def species(
     founder_duration = 1000,
     founder_N = 10,
     founder_Q = 3,
-    founder_X = 0.2,
+    founder_X = 0,
     
-    R0 = 1.0005,
-    expansion_Q = 3,
-    expansion_X = 0.2,
+    R0 = 1.0003,
+    expansion_Q = 10,
+    expansion_X = 0.1,
     
-    plateau_duration = 40000,
-    plateau_N = 14660,
-    plateau_Q = 3,
-    plateau_X = 0.2 ):
+    plateau_duration = 1000,
+    plateau_N = 15000,
+    plateau_Q = 10,
+    plateau_X = 0.1 ):
        
     expansion = []
     N = founder_N
@@ -758,7 +760,7 @@ def species(
         x = (plateau_N - N) / (plateau_N - founder_N)
         
         N = N * np.exp(x * ln_R0)
- 
+
         expansion.append(N)
         
     expansion_duration = len(expansion)

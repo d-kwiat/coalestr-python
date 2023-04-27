@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.2.16' 
+VERSION = '0.2.17' 
 DESCRIPTION = 'A Python package for implementing the genomic transmission graph'
 LONG_DESCRIPTION = 'coalestr is a Python package for implementing the genomic transmission graph to model the transmission dynamics and genomic diversity of a recombining parasite population. You can find tutorials and worked examples at https://d-kwiat.github.io/gtg/'
 
