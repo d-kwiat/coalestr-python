@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.2.15' 
-DESCRIPTION = 'Short description of coalestr'
-LONG_DESCRIPTION = 'Long description of coalestr'
+VERSION = '0.2.16' 
+DESCRIPTION = 'A Python package for implementing the genomic transmission graph'
+LONG_DESCRIPTION = 'coalestr is a Python package for implementing the genomic transmission graph to model the transmission dynamics and genomic diversity of a recombining parasite population. You can find tutorials and worked examples at https://d-kwiat.github.io/gtg/'
 
 # Setting up
 setup(
@@ -10,13 +10,11 @@ setup(
         name="coalestr", 
         version=VERSION,
         author="Dominic Kwiatkowski",
-        author_email="<dkwiatkowski@gmail.com>",
+        author_email="<dkwiatkowski@sjc.ox.ac.uk>",
         description=DESCRIPTION,
         long_description=LONG_DESCRIPTION,
         packages=find_packages(),
-        install_requires=[], # add any additional packages that 
-        # needs to be installed along with your package. Eg: 'caer'
-        
+        install_requires=['numpy', 'matplotlib'],         
         keywords=['python', 'first package'],
         classifiers= [
             "Development Status :: 3 - Alpha",
